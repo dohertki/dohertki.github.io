@@ -1,0 +1,12 @@
+
+
+
+@font-face{
+    font-family: Maski;
+    src: url(maski.tff);
+    }
+
+body, h1 {
+  font-family: 'Offside';
+  color: blue;}
+
