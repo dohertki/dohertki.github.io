@@ -2,11 +2,15 @@
 
 
 @font-face{
-    font-family: Maski;
-    src: url(maski.tff);
+    font-family: 'Masked';
+    src: url('fonts/mask.ttf');
     }
 
 body, h1 {
-  font-family: 'Offside';
-  color: blue;}
+  font-family: 'Masked';
+  color: black;
+  }
+
+
+
 
