@@ -5,7 +5,7 @@
 
 // *************************************************************************
      var apiKey = '01ddf7484cf95ea7346008867a667fef';
-     var url = 'http://gateway.marvel.com/v1/public/characters?name=Black%20Widow&apikey=01ddf7484cf95ea7346008867a667fef';
+     var url = 'http://gateway.marvel.com:80/v1/public/characters?name=Black%20Widow&apikey=01ddf7484cf95ea7346008867a667fef';
       document.addEventListener('DOMContentLoaded', bindButtons);
       function bindButtons(){
           document.getElementById('zipSubmit').addEventListener('click',function(event){
@@ -63,7 +63,7 @@ xhr.onerror = function() {
 
 
           var req = new XMLHttpRequest();
-          req.open('GET','https://gateway.marvel.com/v1/public/characters?name=hulk&apikey=01ddf7484cf95ea7346008867a667fef',true);                                  
+          req.open('GET','https://gateway.marvel.com:80/v1/public/characters?name=hulk&apikey=01ddf7484cf95ea7346008867a667fef',true);                                  
             /*api.openweathermap.org/data/2.5/weather?q=' + city + ',or&appid=' + apiKey, false);*/
       req.send(null);
       var report = JSON.parse(req.responseText);
