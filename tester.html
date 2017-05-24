@@ -11,7 +11,7 @@
     <!THese are linked but used local to make changes>
     <!<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">  <!</script>
     <script src='js/bootstrap.min.js'></script>
-    <script src= 'script.js'></script>     
+    <!<script src= 'script.js'><!</script>     
 
     <link href="https://fonts.googleapis.com/css?family=Barrio" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Offside|Walter+Turncoat" rel="stylesheet">
@@ -30,69 +30,151 @@
 
 
 
-<div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Brand</a>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Brand</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
     </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div><!--/.nav-collapse -->
   </div>
-</div>
 
-<div class="container-fixed">
+ <div class="container">
   <div class="page-header">
-  <h1>How to use the Marvel API.</h1>
-  <div class="text-center">
-    <h1>Bootstrapper starter template</h1>
-    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+   <h1>How to use the Marvel API.</h1>
+    <div class="text-center">
+      <h1>Bootstrapper starter template</h1>
+      <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+    </div>
+  </div><!-- /.container -->
+  </div>
+
+  <div class="container">
+    <div class="well"> 
+      <h1>Explaining what the API is</h1>
+        <div class="row">
+          <div class="col-lg-8 col-md-8 col-xs-12" >
+         Marvel Comics are a cultural phenomenon. Creations like Iron Man, Spider-man, and the Hulk are among the most recognizable characters on the planet Marvel has invaded every form of media whether it be video games, television, the big screen, and of course we can't forget print. In fact Marvel has been printing comics since 1939 and Marvel's database lists almost 40,000 issues. If you want indulge your inner-geekdom that database is available to the public.  But, to access it you need need to know how to use their API and thats what we are going to explore. 
+         </div>
+       </div>
+    </div> 
+  </div>
+
+  <div class="container">
+  
+  <div class="well"> <div class="col-md-2"></div>
+    <h1>Lets get started.</h1>
+    <div class="row">
+          <div class="col-lg-8 col-md-8 col-xs-12" >
+    <p>The first thing that you will need to visit the <a href="https://developer.marvel.com/" target="_blank">Mavel Developer Website</a>. Here you will be able to set up a developer 
+     account.  Once you have an account set up go to the blank page. There are two keys here:
+     a private key and a public key. Write both keys down because you will need them to authenticate api calls.
+         </div>
+       </div>
+    </p>
+    <img class="img-responsive" src="img/marvel_dev_msg.png"  alt="Responsive image" width: "600" height: auto;>
+    <h2><span>A Movie in the Park:<br />Kung Fu Panda</span></h2>
+  </div>
+
   </div>
   
-</div><!-- /.container -->
-
-<div>
-  
-<div class="well"> 
-      <h1>Explaining what the API is</h1>
-    <p>The Marvel API gives one access to Marvel's vast database of information of
-everything comic related. Marvel's public accessible API operations are broadly
-divided up into Characters, Comics(single issues), Creators, Events(the larger
-storyline), Series(comics of the same title and volume) and Stories( a story told
-in one issue). These operations are called entities. Within each entity are
-attributes which are JSON keys and their associated values.</p>
   
   <div class="container">
+  
   <div class="well"> <div class="col-md-2"></div>
-    <h1>Explaining how to set up it</h1>
-    <p>Customer Service - Works with clients and customers (that is, any individuals
-      who use or receive the services or products that your work unit produces, including
-      the general public, individuals who work in the agency, other agencies, or organizations
-      outside the Government) to assess their needs, provide information or assistance, 
-      resolve their problems, or satisfy their expectations; knows about available products
-      and services; is committed to providing quality products and services.</p>
+    <h1>Where to use your API keys.</h1>
+    <div class="row">
+          <div class="col-lg-8 col-md-8 col-xs-12" >
+          <p>Now that you have your API keys, what do you with them? Well when your aplication makes an API call you will need to include them as part of your request. In addtion you will need to include hash that is built from a string made by combining the time stamp + the private key + the public key. This string is then encryted by the <a href="https://en.wikipedia.org/wiki/MD5" target="_blank">md5 algorithm</a>. A word of caution, the order the string is very specific. In addition not all md5 algorithms will produce the same hash key. You may need to try several different sources of the md5 algorithm to find one that the server is happy with. 
+          </p>
+
+         </div>
+       </div>
+    
+    <a href="https://developer.marvel.com/documentation/authorization" target="_blank"><img class="img-responsive" src="img/marvel_key_sm.png"  alt="Responsive image" width: "600" height: auto;> </a>
+  
+
+   <div class="row">
+          <div class="col-lg-8 col-md-8 col-xs-12" >
+          <p>The means that your application will use to communicate with Marvel's servers is through the HTTP method GET. A GET request sends information from one computer by appending the information to the end of the requested destinations  url. This is called the query string and it starts after '?' in above example: 
+          <ul>
+            <li>'ts=1' is the timestap value. </li>
+            <li>'apikey=1234' is the public key value.</li>
+            <li>'hash=ffd2***' is the hash value.</li>
+
+          </ul>
+
+
+
+          </p>
+
+         </div>
+       </div>
+
+
+
+
+
+
   </div>
 
-</div>
+  </div>
   
-</div>
 
-</div>
+
+
+
+
+
+<div class="container">
+    <div class="well"> 
+      <h1>Making an AJAX request </h1>
+        <div class="row">
+          <div class="col-lg-8 col-md-8 col-xs-12" >
+         Ajax is widely used by web applications to receive information from servers asynchronously. Web applications use the Ajax XMLHttpRequest() to create an XMLHttpRequest object. The object is both responsible for sending the request and receiving the response. The XMLHttpRequest object's 'open' procedure prepares the message and takes three arguments: the method(GET, POST, etc), the target servers url, and a true/false argument for asynchronous operation. The JavaScript implement ion is as follows:
+         <div class="jumbotron">
+           <p>
+          var req = new XMLHttpRequest();<br>
+          req.open('GET', url, true);<br>
+          req.send(null);
+          </p>    
+         </div>
+    
+
+         Marvel Comics are a cultural phenomenon. Creations like Iron Man, Spider-man, and the Hulk are among the most recognizable characters on the planet Marvel has invaded every form of media whether it be video games, television, the big screen, and of course we can't forget print. In fact Marvel has been printing comics since 1939 and Marvel's database lists almost 40,000 issues. If you want indulge your inner-geekdom that database is available to the public.  But, to access it you need need to know how to use their API and thats what we are going to explore. 
+         </div>
+       </div>
+    </div> 
+  </div>
+
+
+
+
+
+
 
 
 <div class="container">
   <div class="well"> <div class="col-md-2"></div>
-    <h1>Explaining how to interact with it</h1>
-    <p>Customer Service - Works with clients and customers (that is, any individuals who use or receive the services or products that your work unit produces, including the general public, individuals who work in the agency, other agencies, or organizations outside the Government) to assess their needs, provide information or assistance, resolve their problems, or satisfy their expectations; knows about available products and services; is committed to providing quality products and services.</p>
+    <h1>Get the Response in JSON</h1>
+    <p>     Marvel's comics are a cultural phenomeon. The Marvel API gives one access to Marvel's vast database of information of
+        everything comic related. Marvel's public accessible API operations are broadly
+        divided up into Characters, Comics(single issues), Creators, Events(the larger
+        storyline), Series(comics of the same title and volume) and Stories( a story told
+        in one issue). These operations are called entities. Within each entity are
+        attributes which are JSON keys and their associated values. 
+        </div></p>
   </div>
 
 </div>
@@ -123,6 +205,7 @@ attributes which are JSON keys and their associated values.</p>
  
 <div class="container">
     <a href="#" class="btn btn-default btn-lg" role="button"> Link Launch</a>
+    <button type="submit"  class="btn btn-default btn " role="button"> Next</button>
 </div>
 
 <span></span>

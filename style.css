@@ -5,12 +5,53 @@
     font-family: 'Masked';
     src: url('fonts/mask.ttf');
     }
-
-body, h1 {
+  body {
+  font-family: 'Arial';
+  color: black;
+  }
+  
+  h1 {
   font-family: 'Masked';
   color: black;
   }
 
+.jumbotron{
+	font-family: 'Courier';
+	font-size: 14px;
+	background-color: black;
+	color: white;
+}
+
+body: third-child{
+	background-color: red;
+}
+
+.container-fixed{
+	background-color: blue;
+	color: black;
+}
+
+
+.well.one{
+	color:red;
+}
 
 
 
+h2 { 
+   position: absolute; 
+   top: 200px; 
+   left: 0; 
+   width: 100%; 
+}
+
+
+
+h2 span { 
+   color: white; 
+   font: bold 24px/45px Helvetica, Sans-Serif; 
+   letter-spacing: -1px;  
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 10px; 
+}
