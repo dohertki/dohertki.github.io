@@ -5,7 +5,7 @@
 
 // *************************************************************************
      var apiKey = '01ddf7484cf95ea7346008867a667fef';
-     var url = 'http://gateway.marvel.com:80/v1/public/characters?name=Black%20Widow&apikey=01ddf7484cf95ea7346008867a667fef';
+     var url = 'https://gateway.marvel.com:80/v1/public/characters?name=Black%20Widow&apikey=01ddf7484cf95ea7346008867a667fef';
       document.addEventListener('DOMContentLoaded', bindButtons);
       function bindButtons(){
           document.getElementById('zipSubmit').addEventListener('click',function(event){
