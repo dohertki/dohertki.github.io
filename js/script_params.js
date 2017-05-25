@@ -9,7 +9,7 @@ var hash = '3bee95fd7a0584916c3332a5f4c5720d';
 
 //var url = 'http://gateway.marvel.com/v1/public/comics?ts=1&apikey=01ddf7484cf95ea7346008867a667fef&hash=3bee95fd7a0584916c3332a5f4c5720d';
 
-var url = 'http://gateway.marvel.com/v1/public/characters?limit=5&offset=3&ts=1&apikey=01ddf7484cf95ea7346008867a667fef&hash=3bee95fd7a0584916c3332a5f4c5720d';
+var url = 'https://gateway.marvel.com/v1/public/characters?limit=5&offset=3&ts=1&apikey=01ddf7484cf95ea7346008867a667fef&hash=3bee95fd7a0584916c3332a5f4c5720d';
 var characters = {
     image: [],
     name: [],
@@ -25,11 +25,19 @@ el.addEventListener('click', bButtons,false);
       if(characters.image.length <= 0){
           console.log("List is empty");
         }
-debugger;
+//debugger;
       var req = new XMLHttpRequest();
       req.open('GET', url, true);
       req.send(null);
-      req.onload = function(){
+  
+  
+      req.onerror = function() {
+        console.log('There was an error!');
+        };
+
+  
+  
+    req.onload = function(){
    	
     if(req.status === 200){
    	 	console.log("success");
