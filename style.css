@@ -5,21 +5,53 @@
     font-family: 'Masked';
     src: url('fonts/mask.ttf');
     }
+  
+
+@font-face{
+    font-family: 'Masked Italic';
+    src: url('fonts/maski.ttf');
+    }
+
+
+
   body {
   font-family: 'Arial';
+  font-size: 16px;
   color: black;
   }
   
+  
+ .page-header h1{
+ 	margin-top:  70px;
+ 	font-family: 'Courier';
+ 	font-size:  48px;
+
+ }
+
+
+
+
+
+
+
+
   h1 {
   font-family: 'Masked';
   color: black;
   }
 
-.jumbotron{
+.jumbotron {
 	font-family: 'Courier';
-	font-size: 14px;
+	font-size: 16px;
 	background-color: black;
 	color: white;
+}
+
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 16px; */
+    border-left: 5px solid #eee;
 }
 
 body: third-child{
@@ -38,12 +70,6 @@ body: third-child{
 
 
 
-h2 { 
-   position: absolute; 
-   top: 200px; 
-   left: 0; 
-   width: 100%; 
-}
 
 
 
@@ -54,4 +80,30 @@ h2 span {
    background: rgb(0, 0, 0); /* fallback color */
    background: rgba(0, 0, 0, 0.7);
    padding: 10px; 
+}
+
+
+.panel-heading h2 {
+	font-family: 'Masked Italic';
+	font-size:  40px;
+    background-color:  	#518cca;
+
+}
+
+.panel-heading{
+
+	margin-bottom: 100px;
+	font-family: 'Masked Italic';
+    position: absolute;
+    z-index:  3; 
+
+	background-color: #FFF3BE;
+}
+
+
+.panel-body{
+    background-color: #f96a67;
+    font-family: 'Masked Italic';
+    font-size:  24px;
+
 }

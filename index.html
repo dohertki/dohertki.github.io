@@ -52,10 +52,10 @@
 
  <div class="container">
   <div class="page-header">
-   <h1>How to use the Marvel API.</h1>
+   <h1></h1>
     <div class="text-center">
-      <h1>Bootstrapper starter template</h1>
-      <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+      <h1>Marvel API Guide</h1>
+      <p class="lead">An explorarion into the Marvel Comics API <br> and the how-to behind a small project.</p>
     </div>
   </div><!-- /.container -->
   </div>
@@ -134,7 +134,7 @@
 
 
 <div class="container">
-    <div class="well"> 
+   <div class="well"> <div class="col-md-2"></div> 
       <h1>Making an AJAX request </h1>
         <div class="row">
           <div class="col-lg-8 col-md-8 col-xs-12" >
@@ -151,11 +151,8 @@
          Marvel Comics are a cultural phenomenon. Creations like Iron Man, Spider-man, and the Hulk are among the most recognizable characters on the planet Marvel has invaded every form of media whether it be video games, television, the big screen, and of course we can't forget print. In fact Marvel has been printing comics since 1939 and Marvel's database lists almost 40,000 issues. If you want indulge your inner-geekdom that database is available to the public.  But, to access it you need need to know how to use their API and thats what we are going to explore. 
          </div>
        </div>
-    </div> 
+     </div>
   </div>
-
-
-
 
 
 
@@ -188,12 +185,30 @@
 </div>
 <div class="container">
   <div class="well"> <div class="col-md-2"></div>
-    <h1>Containing attributes or link to the webpage</h1>
-    <p>Customer Service - Works with clients and customers (that is, any individuals who use or receive the services or products that your work unit produces, including the general public, individuals who work in the agency, other agencies, or organizations outside the Government) to assess their needs, provide information or assistance, resolve their problems, or satisfy their expectations; knows about available products and services; is committed to providing quality products and services.</p>
-  
-<div class="pagination pagination-mini">
-	<ul class="pager"><li><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li></ul>
-</div>
+    <h1>Using DOM to update the website </h1>
+    <p> Using the DOM (Document Object Model allows the javaScript code to access and change elements on the webpage. Customer Service - Works with clients and customers (that is, any individuals who use or receive the services or products that your work unit produces, including the general public, individuals who work in the agency, other agencies, or organizations outside the Government) to assess their needs, provide information or assistance, resolve their problems, or satisfy their expectations; knows about available products and services; is committed to providing quality products and services.</p>
+  <div class="jumbotron">
+           <p>
+          
+            Function writeName(){<br>
+            <BLOCKQUOTE>var docElem2 = document.getElementById("cardname");<br>
+            clearCard(docElem2);<br>
+            var newName = document.createElement('h2');<br>
+
+            var newTxt = document.createTextNode(characters.name.shift());<br>
+            newName.appendChild(newTxt);<br>
+            docElem2.appendChild(newName);<br>
+            </BLOCKQUOTE>
+            }
+
+
+
+
+
+         
+          </p>    
+         </div>
+
 
   </div>
 
@@ -206,33 +221,16 @@
     <div class="panel panel-default">
       <div class="panel-heading" id="cardname"><h3>Panel Header</h3></div>
       <div class="panel-body">
-        <div class="well" > 
+           
           <div class="row" >
-            <span id="cardtab"><img src='http://i.annihil.us/u/prod/marvel/i/mg/3/10/52740e0f3c733/portrait_fantastic.jpg' /></span>
-            <span id="cardstory"></span>
+            <div class="col-md-4" id="cardtab" > <img src='img/portrait_uncanny.jpg' /></div>
+            <div class="col-md-4" id="cardstory"></div>
+            <div class="col-md-4" > <img src='img/spacer_sm.png' /></div>
           </div>
-        </div>
-      ></div>
+             
+      </div>
     </div>
     
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
     </div> 
   </div>
@@ -240,17 +238,20 @@
 
 
 <div class="container">
-    <a href="#" class="btn btn-default btn-lg" role="button"> Link Launch</a>
-    <button type="submit"  class="btn btn-default btn " role="button" id="roll"> Next</button>
+    
+    <button type="submit"  class="btn btn-lg btn " role="button" id="roll"> Next</button>
+
+    <br>
+    <br>
+
+
 </div>
 
-<span></span>
+
 
   </body>
 
 <script src= 'js/script_params.js'></script> 
-
-<!  <script src=script.js><!/script>
 </html>
 
 

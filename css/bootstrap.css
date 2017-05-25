@@ -4968,7 +4968,7 @@ a.badge:focus {
 }
 .jumbotron p {
   margin-bottom: 15px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 200;
 }
 .jumbotron > hr {
@@ -5687,8 +5687,8 @@ button.list-group-item-danger.active:focus {
 }
 .panel-default > .panel-heading {
   color: #333;
-  background-color: #f5f5f5;
-  border-color: #ddd;
+  background-color: #518cca;
+  border-color: #4d4d4d;
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #ddd;
