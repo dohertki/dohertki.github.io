@@ -21,15 +21,15 @@ el.addEventListener('click', bButtons,false);
     function bButtons(){
         if(characters.image.length <= 0){
           console.log("List is empty");
+    
         
-        
-        
-        
-        
-        
-        
-        
+
         }
+    if(skipload(characters)){
+        console.log("skipload")
+
+    } 
+
 //debugger;
       var req = new XMLHttpRequest();
       req.open('GET', url, true);
@@ -45,7 +45,7 @@ el.addEventListener('click', bButtons,false);
     req.onload = function(){
    	
     if(req.status === 200){
-   	 	console.log("success");
+   	 	console.log("response success");
 
    	    var report = JSON.parse(req.responseText);
         loadObject(report);
@@ -97,11 +97,11 @@ function loadObject(report){
     if (photoCheck(i,result)){
         console.log("Good photo") ;
     
-    characters.name.push(result[i].name);
-    characters.story.push(result[i].description);
-    img_link[i] = result[i].thumbnail.path +"/portrait_uncanny." + result[i].thumbnail.extension ;
-     var temp = result[i].thumbnail.path +"/portrait_uncanny." + result[i].thumbnail.extension;  
-    characters.image.push( temp );
+        characters.name.push(result[i].name);
+        characters.story.push(result[i].description);
+        img_link[i] = result[i].thumbnail.path +"/portrait_uncanny." + result[i].thumbnail.extension ;
+        var temp = result[i].thumbnail.path +"/portrait_uncanny." + result[i].thumbnail.extension;  
+        characters.image.push( temp );
     console.log(img_link[i]);
     
     
@@ -148,18 +148,24 @@ function writeDoc(){
         docElem.appendChild(newImg);
 }
    
-   
-   
-        function photoCheck(i,result){
-            var check = result[i].thumbnail.path;
-            return !check.includes("image_not_available");
-        }
-   
+function photoCheck(i,result){
+    var check = result[i].thumbnail.path;
+    return !check.includes("image_not_available");
+}
    
    
    
    
    
+ function skipload(characters){
+    console.log("# images: " + characters.image.length)
+    if(characters.image.length <=0){
+        return true;
+    }else{
+        return false;    
+    }
+ 
+ }  
 
 
 //https://stackoverflow.com/questions/683366/remove-all-the-children-dom-elements-in-div

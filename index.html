@@ -38,13 +38,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Brand</a>
+        <a class="navbar-brand" href="#"></a>
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -64,7 +63,7 @@
     <div class="well"> 
       <h1>Explaining what the API is</h1>
         <div class="row">
-          <div class="col-lg-8 col-md-8 col-xs-12" >
+          <div class="col-lg-10 col-md-10 col-xs-12" >
          Marvel Comics are a cultural phenomenon. Creations like Iron Man, Spider-man, and the Hulk are among the most recognizable characters on the planet Marvel has invaded every form of media whether it be video games, television, the big screen, and of course we can't forget print. In fact Marvel has been printing comics since 1939 and Marvel's database lists almost 40,000 issues. If you want indulge your inner-geekdom that database is available to the public.  But, to access it you need need to know how to use their API and thats what we are going to explore. 
          </div>
        </div>
@@ -76,7 +75,7 @@
   <div class="well"> <div class="col-md-2"></div>
     <h1>Lets get started.</h1>
     <div class="row">
-          <div class="col-lg-8 col-md-8 col-xs-12" >
+          <div class="col-lg-10 col-md-10 col-xs-12" >
     <p>The first thing that you will need to visit the <a href="https://developer.marvel.com/" target="_blank">Mavel Developer Website</a>. Here you will be able to set up a developer 
      account.  Once you have an account set up go to the blank page. There are two keys here:
      a private key and a public key. Write both keys down because you will need them to authenticate api calls.
@@ -91,7 +90,7 @@
   <div class="well"> <div class="col-md-2"></div>
     <h1>Where to use your API keys.</h1>
     <div class="row">
-          <div class="col-lg-8 col-md-8 col-xs-12" >
+          <div class="col-lg-10 col-md-10 col-xs-12" >
           <p>Now that you have your API keys, what do you with them? Well when your aplication makes an API call you will need to include them as part of your request. In addtion you will need to include hash that is built from a string made by combining the time stamp + the private key + the public key. This string is then encryted by the <a href="https://en.wikipedia.org/wiki/MD5" target="_blank">md5 algorithm</a>. A word of caution, the order the string is very specific. In addition not all md5 algorithms will produce the same hash key. You may need to try several different sources of the md5 algorithm to find one that the server is happy with. 
           </p>
 
@@ -102,7 +101,7 @@
   
 
    <div class="row">
-          <div class="col-lg-8 col-md-8 col-xs-12" >
+          <div class="col-lg-10 col-md-10 col-xs-12" >
           <p>The means that your application will use to communicate with Marvel's servers is through the HTTP method GET. A GET request sends information from one computer by appending the information to the end of the requested destinations  url. This is called the query string and it starts after '?' in above example: 
           <ul>
             <li>'ts=1' is the timestap value. </li>
@@ -137,7 +136,7 @@
    <div class="well"> <div class="col-md-2"></div> 
       <h1>Making an AJAX request </h1>
         <div class="row">
-          <div class="col-lg-8 col-md-8 col-xs-12" >
+          <div class="col-lg-10 col-md-10 col-xs-12" >
          Ajax is widely used by web applications to receive information from servers asynchronously. Web applications use the Ajax XMLHttpRequest() to create an XMLHttpRequest object. The object is both responsible for sending the request and receiving the response. The XMLHttpRequest object's 'open' procedure prepares the message and takes three arguments: the method(GET, POST, etc), the target servers url, and a true/false argument for asynchronous operation. The JavaScript implement ion is as follows:
          <div class="jumbotron">
            <p>
@@ -161,32 +160,107 @@
 <div class="container">
   <div class="well"> <div class="col-md-2"></div>
     <h1>Get the Response in JSON</h1>
-    <p>     Marvel's comics are a cultural phenomeon. The Marvel API gives one access to Marvel's vast database of information of
-        everything comic related. Marvel's public accessible API operations are broadly
-        divided up into Characters, Comics(single issues), Creators, Events(the larger
-        storyline), Series(comics of the same title and volume) and Stories( a story told
-        in one issue). These operations are called entities. Within each entity are
-        attributes which are JSON keys and their associated values. 
+    <p>     In the response Marvel’s server use a JSON object to structure it’s data. First part is a header that of the structure below:
+
+
+
+
+The header is followed by the information requested and has a structure like so:
+
+The  information in the JSON object in a structured in a similar matter for each endpoint the request was send to. The queries available at each endpoint determine which properties are searched for. In some cases there may be thousands of of results to a query search, but only 20 results will be returned in the response. This should be noted when entering search terms and you may need use multiple terms to get to limit the results. In this demonstration we will use a single character as our search term. You would think that we would only get one result per character, but often there are several for a single character.  
+
+
+
+The server returns the JSON object in an html formatted string. We will need need to make the object accessible to our script. To accomplish this we will use the JSON’s parse() method. We will store our results in an array called report[].
+
+  </p>
+    <div class="jumbotron">
+           <p>
+          
+            if(req.status === 200){<br>
+      
+            <BLOCKQUOTE>console.log("response success");<br>
+            var report = JSON.parse(req.responseText);<br>
+            loadObject(report);<br>
+
+            </BLOCKQUOTE>
+            }<br>
+         
+          </p>    
+   </div>
+
+   <p>
+
+Next stop we will extract the values of the objects held in the report[]. We are going to create an object whose properties are are arrays matching the properties of our result objects. A more favorable way would probably be to create an object for each of the results but we are using only using one object, mostly for simplicity. The object will have three properties that are image[], name[], and story[].  So in name we find the superhero’s name,  in image the superhero’s image, and in story[] we find a short description. 
+
+We use dot notation to access the JSON objects as well as store the values in the characters object. 
+</p>       
+<div class="jumbotron">
+           <p>
+
+
+           var characters = {<br>
+           <BLOCKQUOTE>
+             
+            image: [],<br>
+            name: [],<br>
+            story:[],<br>
+
+           </BLOCKQUOTE>
+          };<br>
+
+
+
+
+
+
+          
+            Function writeName(){<br>
+            <BLOCKQUOTE>var docElem2 = document.getElementById("cardname");<br>
+            clearCard(docElem2);<br>
+            var newName = document.createElement('h2');<br>
+
+            var newTxt = document.createTextNode(characters.name.shift());<br>
+            newName.appendChild(newTxt);<br>
+            docElem2.appendChild(newName);<br>
+            </BLOCKQUOTE>
+            }
+         
+             
+   </div>
+
+
+
+
+
+
+
         </div></p>
   </div>
 
 </div>
 <div class="container">
   <div class="well"> <div class="col-md-2"></div>
-    <h1>Containing code or screenshot</h1>
-    <p>Customer Service - Works with clients and customers (that is, any individuals
-      who use or receive the services or products that your work unit produces, including
-      the general public, individuals who work in the agency, other agencies, or organizations
-      outside the Government) to assess their needs, provide information or assistance, 
-      resolve their problems, or satisfy their expectations; knows about available products
-      and services; is committed to providing quality products and services.</p>
+    <h1>Not all characters have an image.</h1>
+    <p>Custo
+
+
+
+
+
+
+    </p>
   </div>
 
 </div>
 <div class="container">
   <div class="well"> <div class="col-md-2"></div>
-    <h1>Using DOM to update the website </h1>
-    <p> Using the DOM (Document Object Model allows the javaScript code to access and change elements on the webpage. Customer Service - Works with clients and customers (that is, any individuals who use or receive the services or products that your work unit produces, including the general public, individuals who work in the agency, other agencies, or organizations outside the Government) to assess their needs, provide information or assistance, resolve their problems, or satisfy their expectations; knows about available products and services; is committed to providing quality products and services.</p>
+    <h1>Placing API Data into a Webpage </h1>
+    <p> Now that we have made a brief analysis of how an API can be used to query a server for and retrieve date form the servers response  We need to take that data and do something useful with it.  As an example of doing something useful,  our  project will take information from the Marvel API character endpoint.  We have used JavaScript process data received through the API. This is convenient because we can use the Document Object Model of allow JavaScript to  access and change elements on a webpage.<br>
+
+
+Our earlier query  into the character endpoint return a JSON  object with alot of data. Probably the three most useful  to simulate a trading card would be the character picture, the character name and the character descriptions in our  Earlier we extracted data like
+</p>
   <div class="jumbotron">
            <p>
           
@@ -200,14 +274,9 @@
             docElem2.appendChild(newName);<br>
             </BLOCKQUOTE>
             }
-
-
-
-
-
          
           </p>    
-         </div>
+   </div>
 
 
   </div>
@@ -219,7 +288,7 @@
 
   <div class="panel-group">
     <div class="panel panel-default">
-      <div class="panel-heading" id="cardname"><h3>Panel Header</h3></div>
+      <div class="panel-heading" id="cardname"><h3>Hit Next to Begin</h3></div>
       <div class="panel-body">
            
           <div class="row" >
