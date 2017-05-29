@@ -4,7 +4,6 @@ var t1 = '1';
 var privateKey = '6c6d5d8eb234358566e28751b2c644e32f219b54';
 var hash = '3bee95fd7a0584916c3332a5f4c5720d';
 
-
 var url = 'https://gateway.marvel.com/v1/public/characters?limit=20&offset=' + rollDice() +'&ts=1&apikey=01ddf7484cf95ea7346008867a667fef&hash=3bee95fd7a0584916c3332a5f4c5720d';
 
 
@@ -52,10 +51,16 @@ el.addEventListener('click', bButtons,false);
         
         console.log("welcome to the jungle");
         
-
+   console.log("pre-pop:" + characters.image.length);
+   console.log("pre-pop:" + characters.name.length); 
+   console.log("pre-pop:" + characters.story.length); 
+   debugger;
     writeName();
     writeDoc();
     writeStory();
+   console.log("pop:" + characters.image.length);
+   console.log("pop:" + characters.name.length); 
+   console.log("pop:" + characters.story.length); 
     anchorAt(0);
   
     scrollWin(); 
@@ -91,14 +96,17 @@ function loadObject(report){
 
     if (photoCheck(i,result)){
         console.log("Good photo") ;
-    
+      //  debugger;
         characters.name.push(result[i].name);
         characters.story.push(result[i].description);
         img_link[i] = result[i].thumbnail.path +"/portrait_uncanny." + result[i].thumbnail.extension ;
         var temp = result[i].thumbnail.path +"/portrait_uncanny." + result[i].thumbnail.extension;  
         characters.image.push( temp );
     console.log(img_link[i]);
-    
+     
+   console.log("push:" + characters.image.length);
+   console.log("push:" + characters.name.length); 
+   console.log("push:" + characters.story.length); 
     
     
     };
@@ -133,12 +141,13 @@ function writeName(){
 
 /*Place character image into webpage*/
 function writeDoc(){
+   // debugger;
     var docElem = document.getElementById("cardtab");
     clearCard(docElem);
 //        var docElem = document.getElementById("cardtab");
     var newImg = document.createElement('img');
     
-    newImg.src = document.createTextNode(characters.image.shift()).data;
+    newImg.src = document.createTextNode(characters.image.data);
     newImg.src = characters.image.shift();
        // newImg.src = document.createTextNode(img_link[5]).data;
         docElem.appendChild(newImg);
@@ -147,8 +156,20 @@ function writeDoc(){
 
 /*Skip results that lack an image*/   
 function photoCheck(i,result){
-    var check = result[i].thumbnail.path;
-    return !check.includes("image_not_available");
+   
+  
+   var check = result[i].thumbnail.path;
+   if(check.includes("image_not_available")){
+       console.log("no photo");
+       return false;
+    }else{
+        console.log("has photo");
+        return true;
+    }
+   
+   
+   
+   return !check.includes("image_not_available");
 }
    
    
