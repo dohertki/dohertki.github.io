@@ -64,7 +64,7 @@
       <h1>Explaining what the API is</h1>
         <div class="row">
           <div class="col-lg-10 col-md-10 col-xs-12" >
-         Marvel Comics are a cultural phenomenon. Creations like Iron Man, Spider-man, and the Hulk are among the most recognizable characters on the planet Marvel has invaded every form of media whether it be video games, television, the big screen, and of course we can't forget print. In fact Marvel has been printing comics since 1939 and Marvel's database lists almost 40,000 issues. If you want indulge your inner-geekdom that database is available to the public.  But, to access it you need need to know how to use their API and thats what we are going to explore. 
+         Marvel Comics are a cultural phenomenon. Creations like Iron Man, Spider-man, and the Hulk are among the most recognizable characters on the planet. Marvel has invaded every form of media whether it be video games, television, the big screen, and of course, we can't forget print. In fact, Marvel has been printing comics since 1939 and Marvel's database lists almost 40,000 issues. If you want indulge your inner-geekdom that database is available to the public.  Accessing though requires one needs to know how to use their API and that is what we are going to explore. 
          </div>
        </div>
     </div> 
@@ -76,9 +76,9 @@
     <h1>Lets get started.</h1>
     <div class="row">
           <div class="col-lg-10 col-md-10 col-xs-12" >
-    <p>In this guide we will build a small application using the Marvel Comics API. The application will access character information from Marvel's servers and create something like a digital trading card. The first thing that we will need to visit the <a href="https://developer.marvel.com/" target="_blank">Mavel Developer Website</a>. Here you will be able to set up a developer 
-     account.  Once you have an account set up go to the blank page. There are two keys here:
-     a private key and a public key. Write both keys down because you will need them to authenticate api calls.
+    <p>In this guide we will build a small application using the Marvel Comics API. The application will access character information from Marvel's servers and create something like a digital trading card. The first thing that we will need to do is visit the <a href="https://developer.marvel.com/" target="_blank">Mavel Developer Website</a>. Here we will be able to set up a developer 
+     account.  Once we have an account set up go to the blank page. There are two keys here:
+     a private key and a public key. Write both keys down because both will be needed to authenticate api calls.
          </div>
        </div>
     </p>
@@ -91,7 +91,7 @@
     <h1>Where to use your API keys.</h1>
     <div class="row">
           <div class="col-lg-10 col-md-10 col-xs-12" >
-          <p>Now that we have some API keys, what do we do with them? Well when our aplication makes an API call we will need to include them as part of our request. In addtion you we need to include hash that is built from a string made by combining the time stamp + the private key + the public key. This string is then encryted by the <a href="https://en.wikipedia.org/wiki/MD5" target="_blank">md5 algorithm</a>. A word of caution, the order the string is very specific. In addition not all md5 algorithms will produce the same hash key. We may need to try several different sources of the md5 algorithm to find one that the server is happy with. 
+          <p>Now that we have some API keys, what do we do with them? Well when our aplication makes an API call we will need to include them as part of our request. In addtion we need to include hash that is built from a string made by combining the time stamp + the private key + the public key. This string is then encryted by the <a href="https://en.wikipedia.org/wiki/MD5" target="_blank">md5 algorithm</a>. A word of caution, the order the string is very specific. In addition not all md5 algorithms are created equal and may not produce the correct hash key. We may need to try several different sources of the md5 algorithm to find one that the server is happy with. 
           </p>
 
          </div>
@@ -137,7 +137,7 @@
       <h1>Making an AJAX request </h1>
         <div class="row">
           <div class="col-lg-10 col-md-10 col-xs-12" >
-         Ajax is widely used by web applications to receive information from servers asynchronously. Web applications use the Ajax XMLHttpRequest() to create an XMLHttpRequest object. The object is both responsible for sending the request and receiving the response. The XMLHttpRequest object's 'open' procedure prepares the message and takes three arguments: the method(GET, POST, etc), the target servers url, and a true/false argument for asynchronous operation. The JavaScript implement ion is as follows:
+         Ajax is widely used by web applications to receive information from servers asynchronously. Web applications use the Ajax XMLHttpRequest() to create an XMLHttpRequest object. The object is both responsible for sending the request and receiving the response. The XMLHttpRequest object's 'open' procedure prepares the message and takes three arguments: the method(GET, POST, etc), the target server's url, and a true/false argument for asynchronous operation. The JavaScript implementation in our application is as follows:
          <div class="jumbotron">
            <p>
           var req = new XMLHttpRequest();<br>
@@ -145,8 +145,6 @@
           req.send(null);
           </p>    
          </div>
-    
-
          
          </div>
        </div>
@@ -160,14 +158,11 @@
 <div class="container">
   <div class="well"> <div class="col-md-2"></div>
     <h1>Get the Response in JSON</h1>
-    <p>     In the response Marvel’s server use a JSON object to structure it’s data. First part is a header that of the structure below:
-
-
-
-
-The header is followed by the information requested and has a structure like so:
-
-The  information in the JSON object in a structured in a similar matter for each endpoint the request was send to. The queries available at each endpoint determine which properties are searched for. In some cases there may be thousands of of results to a query search, but only 20 results will be returned in the response. This should be noted when entering search terms and you may need use multiple terms to get to limit the results. In this demonstration we will use a single character as our search term. You would think that we would only get one result per character, but often there are several for a single character.  
+    <p>     The Marvel server response uses a JSON object to structure it’s data. The first part of the object is the header and has structure below:
+     <img class="img-responsive" src="img/header.png"  alt="Responsive image" width: "600" height: auto;> </a>
+    Our application will check the status code before it will continue. If the code is 200 then our application will parse the message. The 'results' contain the actual data we are interested in. Each object here is a successful result to our query. The results are typically structured like below:
+<img class="img-responsive" src="img/data_object.png"  alt="Responsive image" width: "600" height: auto;> </a>
+    The  information in each JSON object in a structured in a similar matter for every endpoint. The queries available at each endpoint determine which properties are searched for. In some cases, there may be thousands of results to a query search, but only 20 results will be returned in the response. This should be noted when entering search terms and you may need to use multiple terms to limit the results. In ou application, we will use a single character as our search term and we will search the character endpoint. You would think that we would only get one result per character, but often there are several for a single character.  
 
 
 
@@ -191,7 +186,7 @@ The server returns the JSON object in an html formatted string. We will need nee
 
    <p>
 
-Next stop we will extract the values of the objects held in the report[]. We are going to create an object whose properties are are arrays matching the properties of our result objects. A more favorable way would probably be to create an object for each of the results but we are using only using one object, mostly for simplicity. The object will have three properties that are image[], name[], and story[].  So in name we find the superhero’s name,  in image the superhero’s image, and in story[] we find a short description. 
+Next stop we will extract the values of the objects held in the report[]. We are going to create an object whose properties are are arrays matching the properties of our result objects. A more favorable way would probably be to create an object for each of the results, but we are using only one object, mostly for simplicity. The object will have three properties, theses are: image[], name[], and story[].  So in the name array, we find the superhero names,  in image array... the superhero images, and in story[] we find a short character descriptions. 
 
 We use dot notation to access the JSON objects as well as store the values in the characters object. 
 </p>       
@@ -256,11 +251,9 @@ We use dot notation to access the JSON objects as well as store the values in th
 <div class="container">
   <div class="well"> <div class="col-md-2"></div>
     <h1>Placing API Data into a Webpage </h1>
-    <p> Now that we have made a brief analysis of how an API can be used to query a server for and retrieve date form the servers response  We need to take that data and do something useful with it.  As an example of doing something useful,  our  project will take information from the Marvel API character endpoint.  We have used JavaScript process data received through the API. This is convenient because we can use the Document Object Model of allow JavaScript to  access and change elements on a webpage.<br>
-
-
-Our earlier query  into the character endpoint return a JSON  object with alot of data. Probably the three most useful  to simulate a trading card would be the character picture, the character name and the character descriptions in our  Earlier we extracted data like
-</p>
+    <p> Now, we have made a brief analysis of how an API can be used to query Marvel and receive data form the servers response.  We need to take that data and do something useful with it.  For our project doing something useful is making a trading card. As an example of doing something useful,  our  project will take information from the Marvel API character endpoint.  We have used JavaScript process data received through the API. This is convenient because we can use the Document Object Model of allow JavaScript to  access and change elements on a webpage.<br>
+    Our earlier query of the character endpoint returned an object with alot of data. Likely the three most useful properties to us are the character picture, the character name and the character descriptions in our  Earlier we extracted data and placed it into the characters object. Now we will use tools in the DOM(Document Object Model) to place our vaules into html elements that will be in our web application. The characters object didn't make much of distiction between its three properties, but for html sake, name and story are placed into elements holding strings and the picture will be placed into a <img> element. An example of the function that places the name intop html is listed below:
+    </p>
   <div class="jumbotron">
            <p>
           
@@ -277,8 +270,8 @@ Our earlier query  into the character endpoint return a JSON  object with alot o
          
           </p>    
    </div>
-
-
+    <p>All the elements are now in place. We will randomly pick a number for the offset in our query.; this will start us in a new random position each time the browser is refreshed. We will set results to the maximum of 20; this should give us several cards to show. The element’s positions are setup in css. The final result is below.  
+    </p>
   </div>
 
 </div>
