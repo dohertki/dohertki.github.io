@@ -1,11 +1,11 @@
 // *************************************************************************
-var apiKe = '01ddf7484cf95ea7346008867a667fef';
+var apiKey = '01ddf7484cf95ea7346008867a667fef';
 var t1 = '1';
 var privateKey = '6c6d5d8eb234358566e28751b2c644e32f219b54';
 var hash = '3bee95fd7a0584916c3332a5f4c5720d';
 
 
-var url = 'http://gateway.marvel.com/v1/public/characters?limit=5&offset=' + rollDice() +'&ts=1&apikey=01ddf7484cf95ea7346008867a667fef&hash=3bee95fd7a0584916c3332a5f4c5720d';
+var url = 'https://gateway.marvel.com/v1/public/characters?limit=5&offset=' + rollDice() +'&ts=1&apikey=01ddf7484cf95ea7346008867a667fef&hash=3bee95fd7a0584916c3332a5f4c5720d';
 
 
 
@@ -14,6 +14,7 @@ var characters = {
     name: [],
     story:[],
     };
+
 var img_link= [];
 var el = document.getElementById("roll");
 
@@ -25,12 +26,9 @@ el.addEventListener('click', bButtons,false);
         
 
         }
-    if(skipload(characters)){
-        console.log("skipload")
+    
 
-    } 
 
-//debugger;
       var req = new XMLHttpRequest();
       req.open('GET', url, true);
       req.send(null);
@@ -55,13 +53,10 @@ el.addEventListener('click', bButtons,false);
         console.log("welcome to the jungle");
         
 
-
- //   debugger;
     writeName();
     writeDoc();
     writeStory();
     anchorAt(0);
-   console.log("End of line");
   
     scrollWin(); 
   
@@ -76,7 +71,7 @@ el.addEventListener('click', bButtons,false);
 
 }
 
-
+/*Load result objects into characters object*/
 function loadObject(report){
 
     var picture = report.data.results[0].thumbnail;
@@ -92,7 +87,7 @@ function loadObject(report){
             result[i].description = "    ";
             console.log("miss");
      }
-//   debugger;
+
 
     if (photoCheck(i,result)){
         console.log("Good photo") ;
@@ -114,7 +109,7 @@ function loadObject(report){
     }
 }
 
-
+/*Place character story into webpage*/
 function writeStory(){
     var docElem2 = document.getElementById("cardstory");
     clearCard(docElem2);
@@ -125,6 +120,7 @@ function writeStory(){
     docElem2.appendChild(newName);
 }
 
+/*Place character name into webpage*/
 function writeName(){
     var docElem2 = document.getElementById("cardname");
     clearCard(docElem2);
@@ -135,7 +131,7 @@ function writeName(){
     docElem2.appendChild(newName);
 }
 
-
+/*Place character image into webpage*/
 function writeDoc(){
     var docElem = document.getElementById("cardtab");
     clearCard(docElem);
@@ -147,7 +143,9 @@ function writeDoc(){
        // newImg.src = document.createTextNode(img_link[5]).data;
         docElem.appendChild(newImg);
 }
-   
+
+
+/*Skip results that lack an image*/   
 function photoCheck(i,result){
     var check = result[i].thumbnail.path;
     return !check.includes("image_not_available");
@@ -156,7 +154,7 @@ function photoCheck(i,result){
    
    
    
-   
+ /*Skip query if character members remain*/  
  function skipload(characters){
     console.log("# images: " + characters.image.length)
     if(characters.image.length <=0){
@@ -168,7 +166,8 @@ function photoCheck(i,result){
  }  
 
 
-//https://stackoverflow.com/questions/683366/remove-all-the-children-dom-elements-in-div
+/* Referenced from://https://stackoverflow.com/questions/683366/remove-all-the-children-dom-elements-in-div*/
+/*Remove character from card*/
 function clearCard(element){
     while (element.hasChildNodes()) {
         element.removeChild(element.lastChild);
@@ -180,7 +179,7 @@ function clearCard(element){
 
 
 /* Modified code of function @ https://www.w3schools.com/jsref/jsref_random.asp*/
-
+/*Find a random number for offset*/
 function rollDice() {
     var x = Math.floor((Math.random() * 1480) + 1);
     return x;
@@ -190,16 +189,16 @@ function rollDice() {
 
 
 /* Function refferenced from:https://www.w3schools.com/jsref/met_element_scrollintoview.asp*/
-
+/*Anchor at the trading card*/
 function anchorCard() {
     var elmnt = document.getElementById("cardtab");
     elmnt.scrollIntoView();
 }
-    
+/*Anchor at a specific location*/    
 function anchorAt(height){
     window.scrollTo(0,document.body.scrollHeight);
 }
-
+/*Scroll to bottom of window*/
 function scrollWin() {
 
         window.scrollBy(0, 100);
