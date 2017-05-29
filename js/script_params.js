@@ -5,7 +5,7 @@ var privateKey = '6c6d5d8eb234358566e28751b2c644e32f219b54';
 var hash = '3bee95fd7a0584916c3332a5f4c5720d';
 
 
-var url = 'https://gateway.marvel.com/v1/public/characters?limit=5&offset=' + rollDice() +'&ts=1&apikey=01ddf7484cf95ea7346008867a667fef&hash=3bee95fd7a0584916c3332a5f4c5720d';
+var url = 'https://gateway.marvel.com/v1/public/characters?limit=20&offset=' + rollDice() +'&ts=1&apikey=01ddf7484cf95ea7346008867a667fef&hash=3bee95fd7a0584916c3332a5f4c5720d';
 
 
 
