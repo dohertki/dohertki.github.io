@@ -76,7 +76,7 @@
     <h1>Lets get started.</h1>
     <div class="row">
           <div class="col-lg-10 col-md-10 col-xs-12" >
-    <p>The first thing that you will need to visit the <a href="https://developer.marvel.com/" target="_blank">Mavel Developer Website</a>. Here you will be able to set up a developer 
+    <p>In this guide we will build a small application using the Marvel Comics API. The application will access character information from Marvel's servers and create something like a digital trading card. The first thing that we will need to visit the <a href="https://developer.marvel.com/" target="_blank">Mavel Developer Website</a>. Here you will be able to set up a developer 
      account.  Once you have an account set up go to the blank page. There are two keys here:
      a private key and a public key. Write both keys down because you will need them to authenticate api calls.
          </div>
@@ -91,7 +91,7 @@
     <h1>Where to use your API keys.</h1>
     <div class="row">
           <div class="col-lg-10 col-md-10 col-xs-12" >
-          <p>Now that you have your API keys, what do you with them? Well when your aplication makes an API call you will need to include them as part of your request. In addtion you will need to include hash that is built from a string made by combining the time stamp + the private key + the public key. This string is then encryted by the <a href="https://en.wikipedia.org/wiki/MD5" target="_blank">md5 algorithm</a>. A word of caution, the order the string is very specific. In addition not all md5 algorithms will produce the same hash key. You may need to try several different sources of the md5 algorithm to find one that the server is happy with. 
+          <p>Now that we have some API keys, what do we do with them? Well when our aplication makes an API call we will need to include them as part of our request. In addtion you we need to include hash that is built from a string made by combining the time stamp + the private key + the public key. This string is then encryted by the <a href="https://en.wikipedia.org/wiki/MD5" target="_blank">md5 algorithm</a>. A word of caution, the order the string is very specific. In addition not all md5 algorithms will produce the same hash key. We may need to try several different sources of the md5 algorithm to find one that the server is happy with. 
           </p>
 
          </div>
@@ -102,7 +102,7 @@
 
    <div class="row">
           <div class="col-lg-10 col-md-10 col-xs-12" >
-          <p>The means that your application will use to communicate with Marvel's servers is through the HTTP method GET. A GET request sends information from one computer by appending the information to the end of the requested destinations  url. This is called the query string and it starts after '?' in above example: 
+          <p>The means that our application will use to communicate with Marvel's servers is through the HTTP method GET. A GET request sends information from one computer by appending the information to the end of the requested destination's url. This is called the query string and it starts after '?' in above example: 
           <ul>
             <li>'ts=1' is the timestap value. </li>
             <li>'apikey=1234' is the public key value.</li>
@@ -147,7 +147,7 @@
          </div>
     
 
-         Marvel Comics are a cultural phenomenon. Creations like Iron Man, Spider-man, and the Hulk are among the most recognizable characters on the planet Marvel has invaded every form of media whether it be video games, television, the big screen, and of course we can't forget print. In fact Marvel has been printing comics since 1939 and Marvel's database lists almost 40,000 issues. If you want indulge your inner-geekdom that database is available to the public.  But, to access it you need need to know how to use their API and thats what we are going to explore. 
+         
          </div>
        </div>
      </div>
